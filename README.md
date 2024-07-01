@@ -128,3 +128,80 @@ struct ProfileView: View {
 }
 
 ```
+
+--- 
+# How do use with Navigator
+
+### Create Navigator class for example 
+```swift
+
+import SwiftUI
+
+/// A class responsible for navigating to different views within the app using the provided router.
+public final class Navigator {
+    /// The router used for navigation.
+    let router: AppRouter
+
+    /// Initializes the `Navigator` with the provided router.
+    /// - Parameter router: The router used for navigation.
+    init(router: AppRouter) {
+        self.router = router
+    }
+}
+
+
+```
+
+### Add navigate fun for example 
+#### UIKit example
+
+```swift
+
+
+fun yourUIViewcontrollerName() {
+let vc = YourViewcontrollerName()
+vc.title = "This is UIKit UIViewcontroller"
+router.pushViewController(vc)
+
+}
+
+```
+
+
+#### SwiftUI example
+
+```swift
+
+
+    func YourViewControllerName() {
+        let vc = UIHostingController(rootView: SalonDetailView())
+        vc.hidesBottomBarWhenPushed = true
+        vc.title = title
+        router.pushViewController(vc)
+    }
+
+}
+
+```
+
+#### SwiftUI clean setup example
+
+```swift
+
+    class YourViewControllerName: UIHostingController<SomeSwiftUIView> {
+        override func viewDidLoad() {
+            super.viewDidLoad()
+        }
+    }
+
+
+    func YourViewControllerName() {
+        let vc = YourViewControllerName(rootView: SomeSwiftUIView())
+        vc.hidesBottomBarWhenPushed = true
+        vc.title = title
+        router.pushViewController(vc)
+    }
+
+}
+
+```
