@@ -1,4 +1,4 @@
-# UIKitToSwiftUIAppRouter
+# AppRouter
 
 A simple example of usage.
 
@@ -7,7 +7,7 @@ A simple example of usage.
 ### Create UIViewController class
 ```swift
 import SwiftUI
-import UIKitToSwiftUIAppRouter /// Import package
+import AppRouter /// Import package
 
 class HomeVC: UIViewController {
 
@@ -25,7 +25,7 @@ class HomeVC: UIViewController {
 ```swift
 
 import SwiftUI
-import UIKitToSwiftUIAppRouter /// Import package
+import AppRouter /// Import package
 
 struct ProfileView: View {
     let router: AppRouter /// set here
@@ -42,7 +42,7 @@ struct ProfileView: View {
 ### Open your Swiftui View with UIHostingController #1 
 ```swift
 import SwiftUI
-import UIKitToSwiftUIAppRouter
+import AppRouter
 
 class HomeVC: UIViewController {
 
@@ -76,7 +76,7 @@ class ProfileViewVC: UIHostingController<ProfileView> {
 ```swift
 
 import SwiftUI
-import UIKitToSwiftUIAppRouter
+import AppRouter
 
 class HomeVC: UIViewController {
 
@@ -102,7 +102,7 @@ class HomeVC: UIViewController {
 ```swift
 
 import SwiftUI
-import UIKitToSwiftUIAppRouter
+import AppRouter
 
 struct ProfileView: View {
     let router: AppRouter
