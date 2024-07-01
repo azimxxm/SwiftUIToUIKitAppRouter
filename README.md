@@ -127,8 +127,3 @@ struct ProfileView: View {
 }
 
 ```
-
-**Result:**
-
-![Example](./Images/Example.png)
-
