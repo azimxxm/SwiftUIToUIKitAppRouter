@@ -205,3 +205,51 @@ router.pushViewController(vc)
 }
 
 ```
+
+___
+
+
+#### How do Use UITabBarController with setHostView
+
+```swift
+
+class SomeViewController: UIViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        self.navigationController?.setNavigationBarHidden(isHide, animated: !isHide)
+        self.navigationController?.navigationBar.isHidden = isHide
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        self.setHostView(rootView: view, swiftUIView: SwiftUIViewHere(router: AppRouter(rootViewController: self)))
+    }
+}
+
+```
+
+### setHostView extenstion 
+```swift
+extension UIViewController {
+    /// SwiftUI View to UIKit View
+    func setHostView<Content: View>(rootView: UIView, swiftUIView: Content) {
+        let hostView = UIHostingController(rootView: swiftUIView)
+        hostView.view.translatesAutoresizingMaskIntoConstraints = false
+        rootView.addSubview(hostView.view)
+        NSLayoutConstraint.activate([
+            hostView.view.topAnchor.constraint(equalTo: rootView.topAnchor),
+            hostView.view.leadingAnchor.constraint(equalTo: rootView.leadingAnchor),
+            hostView.view.trailingAnchor.constraint(equalTo: rootView.trailingAnchor),
+            hostView.view.bottomAnchor.constraint(equalTo: rootView.bottomAnchor),
+            
+            hostView.view.widthAnchor.constraint(equalTo: rootView.widthAnchor),
+            hostView.view.heightAnchor.constraint(equalTo: rootView.heightAnchor)
+        ])
+    }
+}
+```
